@@ -16,6 +16,7 @@ typedef uint32_t size_bit;
 
 enum class Color{red, blue, green};
 
+void vlearnFundamentalTypes();
 void learnMemLayout();
 int add(int , int& );
 void vPrintFromFile();

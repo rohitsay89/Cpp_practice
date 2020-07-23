@@ -19,13 +19,14 @@
 using namespace std;
 using namespace std::chrono;
 
+#define FUNDAMENTAL_TYPES
 //#define READ_BINARY_IN_CPP
 //#define CPP_MACROS
 //#define PRINT_LAST_K_LINES_IN_A_FILE
 //#define HASH_MAP
 //#define MEMORY_LAYOUT
 //#define MEM_ALLOC_CPP
-#define INHERITANCE
+//#define INHERITANCE
 //#define ABSTRACTION
 //#define FRIEND_FUNCTION
 //#define LEARNPOINTER
@@ -78,6 +79,9 @@ int main()
 {
 	cout << "C++ version = " << __cplusplus << "\nCompilation Date is " << __DATE__ << "\nCompilation Time is " << __TIME__ << endl << endl;
 
+#ifdef FUNDAMENTAL_TYPES
+	vlearnFundamentalTypes();
+#endif
 
 #ifdef PRINT_LAST_K_LINES_IN_A_FILE
 	vPrintFromFile();
@@ -162,6 +166,43 @@ int main()
 
 	printf("\nProgram execution completed\n");
 	return 0;
+}
+
+void vlearnFundamentalTypes(){
+	cout << "This function is to learn about fundamental types in C++11\n";
+	bool boolVar = false;								// 1 byte
+
+	char charVar = 'A';								// 1 byte
+	wchar_t wcharVar = 'B';							// 1 byte
+	char16_t char16_tVar = 'C';						// 2 bytes
+	char32_t char32_tVar = 'D';						// 4 bytes
+
+	short shortVar = 1;								// 2 bytes
+	int intVar = 2;									// 4 bytes
+	long longVar = 3;								// 4 bytes
+	long long longlongVar = 4;						// 8 bytes
+
+	float floatVar = 3.14f;							// 4 bytes
+	double doubleVar = 4.14;						// 8 bytes
+	long double longdoubleVar = 5.14;				// 8 Bytes
+
+
+	cout << "boolVar = " << boolVar << endl;
+
+	cout << "charVar = " << charVar << endl;
+	cout << "wcharVar = " << wcharVar << endl;
+	cout << "char16_tVar = " << char16_tVar << endl;
+	cout << "char32_tVar = " << char32_tVar << endl;
+
+	cout << "shortVar = " << shortVar << endl;
+	cout << "intVar = " << intVar << endl;
+	cout << "longVar = " << longVar << endl;
+	cout << "longlongVar = " << longlongVar << endl;
+
+	cout << "floatVar = " << floatVar << endl;
+	cout << "doubleVar = " << doubleVar << endl;
+	cout << "longdoubleVar = " << longdoubleVar << endl;
+
 }
 
 int add(int a, int& b)
