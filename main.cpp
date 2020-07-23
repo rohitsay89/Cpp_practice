@@ -186,22 +186,22 @@ void vlearnFundamentalTypes(){
 	double doubleVar = 4.14;						// 8 bytes
 	long double longdoubleVar = 5.14;				// 8 Bytes
 
+	cout << "Type \t\t Value \t\t sizeof" << endl;
+	cout << "boolVar \t " << boolVar << "\t\t" << sizeof(boolVar) << endl;
 
-	cout << "boolVar = " << boolVar << endl;
+	cout << "charVar \t" << charVar << "\t\t" << sizeof(charVar) << endl;
+	cout << "wcharVar \t" << wcharVar << "\t\t" << sizeof(wcharVar) << endl;
+	cout << "char16_tVar\t" << char16_tVar << "\t\t" << sizeof(char16_tVar) << endl;
+	cout << "char32_tVar\t" << char32_tVar << "\t\t" << sizeof(char32_tVar) << endl;
 
-	cout << "charVar = " << charVar << endl;
-	cout << "wcharVar = " << wcharVar << endl;
-	cout << "char16_tVar = " << char16_tVar << endl;
-	cout << "char32_tVar = " << char32_tVar << endl;
+	cout << "shortVar \t" << shortVar << "\t\t" << sizeof(shortVar) << endl;
+	cout << "intVar \t\t" << intVar << "\t\t" << sizeof(intVar) << endl;
+	cout << "longVar \t" << longVar << "\t\t" << sizeof(longVar) << endl;
+	cout << "longlongVar \t" << longlongVar << "\t\t" << sizeof(longlongVar) << endl;
 
-	cout << "shortVar = " << shortVar << endl;
-	cout << "intVar = " << intVar << endl;
-	cout << "longVar = " << longVar << endl;
-	cout << "longlongVar = " << longlongVar << endl;
-
-	cout << "floatVar = " << floatVar << endl;
-	cout << "doubleVar = " << doubleVar << endl;
-	cout << "longdoubleVar = " << longdoubleVar << endl;
+	cout << "floatVar \t" << floatVar << "\t\t" << sizeof(floatVar) << endl;
+	cout << "doubleVar \t" << doubleVar << "\t\t" << sizeof(doubleVar) << endl;
+	cout << "longdoubleVar \t" << longdoubleVar << "\t\t" << sizeof(longdoubleVar) << endl;
 
 }
 
