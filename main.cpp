@@ -14,6 +14,7 @@
 #include <string>
 #include <memory>
 #include <iostream>
+#include <bitset>
 
 #include "main.hpp"
 
@@ -216,12 +217,23 @@ void vlearnFundamentalTypes(){
 	// binary and hex representation in C++14
 	int binVal{};
 	int hexVal{0x55};
+	int binVal2{ 0b01011010 };
+
 	binVal = 0b10101010;
 	cout << "cout -> Binary number = " << binVal << endl;
 	printf("printf -> Binary number = 0x%X\n", binVal);
 
 	cout << "cout -> Hex number = " << hexVal << endl;
-	printf("printf -> Hex number = 0x%X\n", hexVal);
+	printf("printf -> Hex number = 0x%X\n\n", hexVal);
+
+	// print formatting in C++ using cout
+	int x{ 12 };
+	cout << "Decimal mode = " << x << '\n'; 					// decimal print
+	cout << "Hex mode = 0x" << std::hex << x << '\n';				// hex mode
+	cout << "Still in Hex mode = 0x" << x << '\n';				// still in hex mode
+	cout << "Octal mode = " << std::oct << x << endl;
+	cout << "Back in decimal mode = " << std::dec << x << endl;
+	cout << "Binary mode = " << bitset<8>(x) << endl;
 
 }
 
