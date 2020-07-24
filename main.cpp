@@ -202,16 +202,26 @@ void vlearnFundamentalTypes(){
 
 	cout << "floatVar \t" << floatVar << "\t\t" << sizeof(floatVar) << endl;
 	cout << "doubleVar \t" << doubleVar << "\t\t" << sizeof(doubleVar) << endl;
-	cout << "longdoubleVar \t" << longdoubleVar << "\t\t" << sizeof(longdoubleVar) << endl;
+	cout << "longdoubleVar \t" << longdoubleVar << "\t\t" << sizeof(longdoubleVar) << endl << endl;
 
 	// Fixed width integers:
 	int8_t num = 55;
 	// in the following line c++ takes the int8_t variable and uses that as a character so it prints its ASCII value
-	cout << "using std::cout \n int8_t Number = " << num << " Size = " << sizeof(num) << endl << endl;
+	cout << "using std::cout \nint8_t Number = " << num << " Size = " << sizeof(num) << endl;
 	// in the following line we are explicitly type casting that variable as int and so 55 is getting printed
-	cout << "using std::cout with static cast\nint8_t Number = " << static_cast<int>(num) << " Size = " << sizeof(num) << endl << endl;
-	printf("using printf int8_t Number = %d \n", num);
+	cout << "using std::cout with static cast\nint8_t Number = " << static_cast<int>(num) << " Size = " << sizeof(num) << endl;
+	printf("using printf int8_t Number = %d \n\n", num);
 
+
+	// binary and hex representation in C++14
+	int binVal{};
+	int hexVal{0x55};
+	binVal = 0b10101010;
+	cout << "cout -> Binary number = " << binVal << endl;
+	printf("printf -> Binary number = 0x%X\n", binVal);
+
+	cout << "cout -> Hex number = " << hexVal << endl;
+	printf("printf -> Hex number = 0x%X\n", hexVal);
 
 }
 
