@@ -5,7 +5,7 @@
  *      Author: rohit
  */
 
-#include <iostream>
+#include <cstdint>
 #include <chrono>
 #include <fstream>
 #include <iomanip>
@@ -13,6 +13,7 @@
 #include <dirent.h>
 #include <string>
 #include <memory>
+#include <iostream>
 
 #include "main.hpp"
 
@@ -202,6 +203,15 @@ void vlearnFundamentalTypes(){
 	cout << "floatVar \t" << floatVar << "\t\t" << sizeof(floatVar) << endl;
 	cout << "doubleVar \t" << doubleVar << "\t\t" << sizeof(doubleVar) << endl;
 	cout << "longdoubleVar \t" << longdoubleVar << "\t\t" << sizeof(longdoubleVar) << endl;
+
+	// Fixed width integers:
+	int8_t num = 55;
+	// in the following line c++ takes the int8_t variable and uses that as a character so it prints its ASCII value
+	cout << "using std::cout \n int8_t Number = " << num << " Size = " << sizeof(num) << endl << endl;
+	// in the following line we are explicitly type casting that variable as int and so 55 is getting printed
+	cout << "using std::cout with static cast\nint8_t Number = " << static_cast<int>(num) << " Size = " << sizeof(num) << endl << endl;
+	printf("using printf int8_t Number = %d \n", num);
+
 
 }
 
