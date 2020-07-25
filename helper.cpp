@@ -170,6 +170,26 @@ bool isAlmostEqual(double a, double b, double epsilon){
 	return (std::abs(a-b) <= epsilon);
 }
 
+int add(int a, int& b)
+{
+	//printf("a = %d, b = %d", a, b);
+	//printf("address of a = %016X\taddress of b = %016X\n", &a ,&b);
+	b = 5;
+	return a+b;
+}
+
+void print()
+{
+	int v[] = {0,1,2,3,4,5,6,7,8,9};
+
+	//auto x = 0;
+
+	for(auto x:v)
+	{
+		cout << x << '\n';
+	}
+}
+
 // logic by Donald Knuth
 bool approxEqual(double a, double b, double epsilon){
 	return (  abs(a-b) <= ( max( abs(a), abs(b) )*epsilon ) );

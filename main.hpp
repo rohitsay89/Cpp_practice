@@ -17,6 +17,7 @@ typedef uint32_t size_bit;
 void vlearnFundamentalTypes();
 void vlearnConstantTypes();
 void vlearnArithmatics();
+void vlearnBitManipulation();
 void learnMemLayout();
 void vPrintFromFile();
 void vReadBinaryFile();

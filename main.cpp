@@ -24,7 +24,8 @@ using namespace std::chrono;
 
 //#define FUNDAMENTAL_TYPES
 //#define CONSTANT_TYPES
-#define ARITHMATIC
+//#define ARITHMATIC
+#define BIT_MANIPULATION
 //#define READ_BINARY_IN_CPP
 //#define CPP_MACROS
 //#define PRINT_LAST_K_LINES_IN_A_FILE
@@ -93,6 +94,10 @@ int main()
 
 #ifdef ARITHMATIC
 	vlearnArithmatics();
+#endif
+
+#ifdef BIT_MANIPULATION
+	vlearnBitManipulation();
 #endif
 
 #ifdef PRINT_LAST_K_LINES_IN_A_FILE
@@ -170,7 +175,6 @@ int main()
 #ifdef MEM_POOL_PATTERN
 	vlearnMemPool();
 #endif
-
 
 	printf("\nProgram execution completed\n");
 	return 0;
@@ -324,27 +328,86 @@ void vlearnArithmatics(){
 	ep = 0.01;
 	cout << "d1 and d2 are they close enough ? (1=true,0=false) = " << approxEqual(d1, d2, ep) << endl;
 
-
 }
 
-int add(int a, int& b)
-{
-	//printf("a = %d, b = %d", a, b);
-	//printf("address of a = %016X\taddress of b = %016X\n", &a ,&b);
-	b = 5;
-	return a+b;
-}
+void vlearnBitManipulation(){
+	cout << "This function is to learn about arithmatic operations in C++11 \n";
 
-void print()
-{
-	int v[] = {0,1,2,3,4,5,6,7,8,9};
+	// bit handling using bitset
+	bitset<8> bits{0b01100101};
+	cout << "Bit pos 0 = " << bits.test(0) << endl;
+	cout << "Bit pos 1 = " << bits.test(1) << endl;
+	cout << "Bit pos 2 = " << bits.test(2) << endl;
+	cout << "Bit pos 3 = " << bits.test(3) << endl;
+	cout << "Bit pos 4 = " << bits.test(4) << endl;
+	cout << "Bit pos 5 = " << bits.test(5) << endl;
+	cout << "Bit pos 6 = " << bits.test(6) << endl;
+	cout << "Bit pos 7 = " << bits.test(7) << endl;
 
-	//auto x = 0;
+	bits.set(3);		// make this bit to 1
+	bits.flip(0);		// toggle this bit
+	bits.reset(5);		// make this bit to 0
 
-	for(auto x:v)
-	{
-		cout << x << '\n';
+	// bit shifting:
+	// left shift is multiplication
+	// right shift is division
+	cout << "Bit shifting demo: \n";
+	uint32_t myVal {0x01};
+	int index = 0;
+
+	cout << "Init val  myVal = " << bitset<8>(myVal) << " = " << myVal << endl;
+
+	// using for loop
+	for(index=0; index < 7; ++index){
+		myVal = myVal << 1;
+		cout << "Left shift by 1 = " << bitset<8>(myVal) << " = " << myVal << endl;
 	}
+#if 0
+	myVal = myVal << 1;		//left shift
+	cout << "Left shift by 1 = " << bitset<8>(myVal) << " = " << myVal << endl;
+	myVal = myVal << 1;		//left shift
+	cout << "Left shift by 1 = " << bitset<8>(myVal) << " = " << myVal << endl;
+	myVal = myVal << 1;		//left shift
+	cout << "Left shift by 1 = " << bitset<8>(myVal) << " = " << myVal << endl;
+	myVal = myVal << 1;		//left shift
+	cout << "Left shift by 1 = " << bitset<8>(myVal) << " = " << myVal << endl;
+	myVal = myVal << 1;		//left shift
+	cout << "Left shift by 1 = " << bitset<8>(myVal) << " = " << myVal << endl;
+	myVal = myVal << 1;		//left shift
+	cout << "Left shift by 1 = " << bitset<8>(myVal) << " = " << myVal << endl;
+	myVal = myVal << 1;		//left shift
+	cout << "Left shift by 1 = " << bitset<8>(myVal) << " = " << myVal << endl;
+#endif
+
+	cout << "\nNow doing right shift by 1 and displaying result in binary and decimal\n\n";
+
+	cout << "Init valu  myVal = " << bitset<8>(myVal) << " = " << myVal << endl;
+	// using for loop
+	for(index=0; index < 7; ++index){
+		myVal = myVal >> 1;		//right shift
+		cout << "Right shift by 1 = " << bitset<8>(myVal) << " = " << myVal << endl;
+	}
+#if 0
+	myVal = myVal >> 1;		//right shift
+	cout << "Right shift by 1 = " << bitset<8>(myVal) << " = " << myVal << endl;
+	myVal = myVal >> 1;		//right shift
+	cout << "Right shift by 1 = " << bitset<8>(myVal) << " = " << myVal << endl;
+	myVal = myVal >> 1;		//right shift
+	cout << "Right shift by 1 = " << bitset<8>(myVal) << " = " << myVal << endl;
+	myVal = myVal >> 1;		//right shift
+	cout << "Right shift by 1 = " << bitset<8>(myVal) << " = " << myVal << endl;
+	myVal = myVal >> 1;		//right shift
+	cout << "Right shift by 1 = " << bitset<8>(myVal) << " = " << myVal << endl;
+	myVal = myVal >> 1;		//right shift
+	cout << "Right shift by 1 = " << bitset<8>(myVal) << " = " << myVal << endl;
+	myVal = myVal >> 1;		//right shift
+	cout << "Right shift by 1 = " << bitset<8>(myVal) << " = " << myVal << endl;
+	myVal = myVal >> 1;		//right shift
+	cout << "Right shift by 1 = " << bitset<8>(myVal) << " = " << myVal << endl;
+#endif
+
+
+
 }
 
 void vPrintFromFile()
