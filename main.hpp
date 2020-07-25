@@ -14,15 +14,13 @@
 #define LEN	24
 typedef uint32_t size_bit;
 
-enum class Color{red, blue, green};
-
 void vlearnFundamentalTypes();
+void vlearnConstantTypes();
+void vlearnArithmatics();
 void learnMemLayout();
-int add(int , int& );
 void vPrintFromFile();
 void vReadBinaryFile();
 void vLearnEnumClass();
-void memAlloc();
 void vLearnEncapsulation();
 void vLearnInheritance();
 void vLearnAbstraction();
@@ -37,6 +35,22 @@ void vlearnStringHandling();
 void vlearnTemplates();
 void vlearnContainers();
 void vlearnMemPool();
+
+
+// helper function declerations:
+void memAlloc();
+int add(int , int& );
+bool isAlmostEqual(double a, double b, double epsilon);
+bool approxEqual(double a, double b, double epsilon);
+
+// structs:
+struct gradStu
+{
+	char name[50];
+	float avgMarks;
+};
+
+enum class Color{red, blue, green};
 
 // abstraction using classes
 class memLyoutClass
@@ -69,8 +83,6 @@ public:
 
 	//uint32_t privateValue;
 };
-
-
 
 // inheriatnce example
 class vehical
@@ -118,7 +130,6 @@ public:
 	size_bit m_gender;
 };
 
-
 // usage of abstract class
 class employee: public person
 {
@@ -132,7 +143,6 @@ private:
 	char m_name[50];
 	size_bit m_Number;
 };
-
 
 // friend class example:
 class A;
@@ -188,7 +198,6 @@ protected:
 	void inputBasic(float sal);
 };
 
-
 class Manager : public Employee
 {
 private:
@@ -241,20 +250,7 @@ public:
 	void printData();
 };
 
-struct gradStu
-{
-	char name[50];
-	float avgMarks;
-};
-//size_bit (*funcptr)(void);
-//void *ptr;
-
-// template function example:
-template <typename T>			// this is the template param declaration
-const T& maxRohit(const T& x, const T& y){
-	return (x>y)?x:y;
-}
-
+// operator overloading
 class Cents{
 private:
 	int m_cents;
@@ -282,6 +278,13 @@ public:
 	}
 };
 
+// template function example:
+template <typename T>			// this is the template param declaration
+const T& maxRohit(const T& x, const T& y){
+	return (x>y)?x:y;
+}
+
+// template class examples:
 template <class TC>
 TC averageRohit(TC* array, int length){
 	TC sum(0);
@@ -294,7 +297,6 @@ TC averageRohit(TC* array, int length){
 	return sum;
 }
 
-// template class example:
 template <class TCA>
 class Array{
 private:
@@ -399,7 +401,6 @@ public:
 		printf("\n");
 	}
 };
-
 
 class IntArray{
 private:

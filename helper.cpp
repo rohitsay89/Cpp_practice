@@ -165,3 +165,12 @@ bool usePool<T>::checkin(T *instance){
 }
 //T* usePool::checkout();
 //bool usePool::checkin(T* instance);
+
+bool isAlmostEqual(double a, double b, double epsilon){
+	return (std::abs(a-b) <= epsilon);
+}
+
+// logic by Donald Knuth
+bool approxEqual(double a, double b, double epsilon){
+	return (  abs(a-b) <= ( max( abs(a), abs(b) )*epsilon ) );
+}

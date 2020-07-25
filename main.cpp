@@ -15,17 +15,19 @@
 #include <memory>
 #include <iostream>
 #include <bitset>
+#include <cmath>
 
 #include "main.hpp"
 
 using namespace std;
 using namespace std::chrono;
 
-#define FUNDAMENTAL_TYPES
+//#define FUNDAMENTAL_TYPES
+//#define CONSTANT_TYPES
+#define ARITHMATIC
 //#define READ_BINARY_IN_CPP
 //#define CPP_MACROS
 //#define PRINT_LAST_K_LINES_IN_A_FILE
-//#define HASH_MAP
 //#define MEMORY_LAYOUT
 //#define MEM_ALLOC_CPP
 //#define INHERITANCE
@@ -85,6 +87,14 @@ int main()
 	vlearnFundamentalTypes();
 #endif
 
+#ifdef CONSTANT_TYPES
+	vlearnConstantTypes();
+#endif
+
+#ifdef ARITHMATIC
+	vlearnArithmatics();
+#endif
+
 #ifdef PRINT_LAST_K_LINES_IN_A_FILE
 	vPrintFromFile();
 #endif
@@ -99,10 +109,6 @@ int main()
 	cout << "Compilation Date is " << __DATE__ << endl;
 	cout << "Compilation Time is " << __TIME__ << endl;
 	auto d = steady_clock::now() - t;
-#endif
-
-#ifdef HASH_MAP
-
 #endif
 
 #ifdef MEMORY_LAYOUT
@@ -234,6 +240,90 @@ void vlearnFundamentalTypes(){
 	cout << "Octal mode = " << std::oct << x << endl;
 	cout << "Back in decimal mode = " << std::dec << x << endl;
 	cout << "Binary mode = " << bitset<8>(x) << endl;
+
+}
+
+void vlearnConstantTypes(){
+	cout << "This function is to learn about constants in C++11 \n";
+
+	// compile time constant
+	const int value { 10 };
+	cout << "const value = " << value << endl;
+	//value = 11;			// compiler error
+
+	// run time constant as the value of userNum is defined by
+	// user at the time when program is running
+	int num;
+	cout << "Enter a number :";
+	cin >> num;
+	const int userNum{ num };
+	cout << "userNum = " << userNum << endl;
+
+
+	// C++11 to ensure it is compile time constant 'constexpr' is used
+	constexpr int newValue { 12 };
+
+}
+
+void vlearnArithmatics(){
+	cout << "This function is to learn about arithmatic operations in C++11 \n";
+	int x {7};
+	int y {4};
+	cout << "x = " << x << ", y = " << x << endl;
+	// get quotient after division
+	cout << "int/int = " << x / y << endl;
+	cout << "double/int = " << static_cast<double>(x) / y << endl;
+	cout << "int/double = " << x / static_cast<double>(y) << endl;
+	cout << "double/double = " << static_cast<double>(x) / static_cast<double>(y) << endl;
+
+	// get remainder after division: modulus (remainder opetrator)
+	cout << "remainder of x/y = " << x%y << endl;
+	x = -x;
+	cout << "remainder of -x/y = " << x%y << endl;
+
+	// exponentiation:
+	double exp{0.0};
+	exp = pow(4.0,3.0);
+	cout << "4^3 = " << exp << endl;
+
+	// pre and post inc/dec operators;
+	x = 2;
+	y = 7;
+	cout << "x = " << x << ", y = " << y << endl;
+	y = ++x;											// increment and then return
+	cout << "x = " << x << ", y = " << y << endl;
+	x = 2;
+	y = 7;
+	y = x++;
+	cout << "x = " << x << ", y = " << y << endl;
+
+	// comma operator, this evaluates first operand and returns 2nd operand
+	// so the follwowing returns y
+	cout << (x,y) << endl;
+
+	// conditional operator c?x:y
+	(x<y)?x=100:y=100;
+	cout << "x = " << x << ", y = " << y << endl;
+
+	// floating point comparisons
+	// == and != should be avoided with floating point
+	double d1{100.00 - 99.99};
+	double d2{10.0 - 9.99};
+	cout << "d1 = " << d1 << " d2 = " << d2 << endl;
+	printf("d1 = %lf, d2 = %lf\n", d1, d2);
+	if(d1 == d2)
+		cout << "d1 == d2" << endl;
+	else if(d1 > d2)
+		cout << "d1 > d2" << endl;
+	else if(d1 < d2)
+		cout << "d1 < d2" << endl;
+
+	// floating point comparison using a particular precision
+	double ep = 0.00000001;
+	cout << "d1 and d2 are they close enough ? (1=true,0=false) = " << isAlmostEqual(d1, d2, ep) << endl;
+	ep = 0.01;
+	cout << "d1 and d2 are they close enough ? (1=true,0=false) = " << approxEqual(d1, d2, ep) << endl;
+
 
 }
 
