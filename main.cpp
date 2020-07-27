@@ -405,6 +405,43 @@ void vlearnBitManipulation(){
 	myVal = myVal >> 1;		//right shift
 	cout << "Right shift by 1 = " << bitset<8>(myVal) << " = " << myVal << endl;
 #endif
+	cout << endl;
+	// bitwise operators
+	// OR = |
+	// AND = &
+	// NOT = ~
+	// XOR = ^
+
+	// Bit masking for C++11:
+	constexpr uint_fast8_t mask0{ 1 << 0 }; // 0x01};
+	constexpr uint_fast8_t mask1{ 1 << 1 }; // 0x02};
+	constexpr uint_fast8_t mask2{ 1 << 2 }; // 0x03};
+	constexpr uint_fast8_t mask3{ 1 << 3 }; // 0x04};
+	constexpr uint_fast8_t mask4{ 1 << 4 }; // 0x05};
+	constexpr uint_fast8_t mask5{ 1 << 5 }; // 0x06};
+	constexpr uint_fast8_t mask6{ 1 << 6 }; // 0x07};
+	constexpr uint_fast8_t mask7{ 1 << 7 }; // 0x08};
+
+	uint_fast8_t flag{0xAA};
+	cout << "flag = " << bitset<8>(flag) << endl;
+	// testing a bit
+	cout << "Bit 0 is = " << ((flag & mask0)?"on\n":"off\n");
+
+	// setting bit 2 (use bitwise OR)
+	flag = flag | mask2;
+	cout << "flag = " << bitset<8>(flag) << " = 0x"	<< hex << static_cast<int>(flag) << endl;
+
+	// multiple bit setting
+	flag |= (mask4 | mask6);
+	cout << "flag = " << bitset<8>(flag) << " = 0x"	<< hex << static_cast<int>(flag) << endl;
+
+	// resetting bit 5,6 (use bitwise AND with NOT)
+	flag = flag & ~(mask5 | mask6);
+	cout << "flag = " << bitset<8>(flag) << " = 0x"	<< hex << static_cast<int>(flag) << endl;
+
+	// toggle bit 2,3 (use bitwise XOR)
+	flag = flag ^ (mask2 | mask3);
+	cout << "flag = " << bitset<8>(flag) << " = 0x"	<< hex << static_cast<int>(flag) << endl;
 
 
 
