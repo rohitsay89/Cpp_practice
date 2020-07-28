@@ -788,6 +788,9 @@ void vLearnVirtualFunctions(){
 	// Interface class (Abstract class):
 	FileErrorLog log("errorLogFile.txt");
 	mySqrt(-2.0, log);
+
+	//Virtual base class:
+	Copier(1,3,5);
 }
 
 void vLearnVtable(){

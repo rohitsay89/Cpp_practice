@@ -297,7 +297,6 @@ public:
 	}
 };
 
-
 // pure virtual class = Interface class
 class IErrorLog{
 public:
@@ -325,6 +324,38 @@ public:
 
 class ScreenErrorLog:public IErrorLog{
 
+};
+
+// Virtual Base class:
+class PoweredDevice{
+public:
+	PoweredDevice(int power)
+	{
+		std::cout << "PoweredDevice: " << power << std::endl;
+	}
+};
+
+class Scanner:virtual public PoweredDevice{
+public:
+	Scanner(int scanner, int power):
+		PoweredDevice(power){
+		std::cout << "Scanner: " << scanner << std::endl;
+	}
+};
+
+class Printer:virtual public PoweredDevice{
+public:
+	Printer(int printer, int power)
+		:PoweredDevice(power){
+		std::cout << "Printer: " << printer << std::endl;
+	}
+};
+
+class Copier: public Scanner, public Printer{
+public:
+	Copier(int scanner, int printer, int power):
+		PoweredDevice(power),
+		Scanner(scanner, power), Printer(printer, power){}
 };
 
 // operator overloading
