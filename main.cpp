@@ -25,7 +25,7 @@ using namespace std::chrono;
 //#define FUNDAMENTAL_TYPES
 //#define CONSTANT_TYPES
 //#define ARITHMATIC
-#define BIT_MANIPULATION
+//#define BIT_MANIPULATION
 //#define READ_BINARY_IN_CPP
 //#define CPP_MACROS
 //#define PRINT_LAST_K_LINES_IN_A_FILE
@@ -38,6 +38,8 @@ using namespace std::chrono;
 //#define LEARNSTATIC
 //#define INHERITANCE1
 //#define INHERITANCE2
+#define VIRTUAL_FUNCTIONS
+//#define VTABLE
 //#define FILE_HANDLING1
 //#define FILE_HANDLING2
 //#define STRING_HANDLING
@@ -150,6 +152,14 @@ int main()
 
 #ifdef INHERITANCE2
 	vLearnInheritance2();
+#endif
+
+#ifdef VIRTUAL_FUNCTIONS
+	vLearnVirtualFunctions();
+#endif
+
+#ifdef VTABLE
+	vLearnVtable();
 #endif
 
 #ifdef FILE_HANDLING1
@@ -732,6 +742,58 @@ void vLearnInheritance2()
 	g1[0].printData();
 }
 
+// part of polymorphism
+void vLearnVirtualFunctions(){
+	cout << "This is example for learning virtual functions\n";
+	Derived derived { 5 };
+	Derived &rDerived { derived };
+	Derived *pDerived { &derived };
+
+	Base &rBase { derived };
+	Base *pBase { &derived };
+
+	cout << "derived returns getName = " << derived.getName() << endl;
+	cout << "rDerived return getName = " << rDerived.getName() << endl;
+	cout << "pDerived return getName = " << pDerived->getName() << endl;
+
+	cout << "derived returns getName = " << derived.getName() << endl;
+	cout << "rBase return getName = " << rBase.getName() << endl;
+	cout << "pBase return getName = " << pBase->getName() << endl;
+	cout << endl;
+
+
+	Cat cat{"Fred"};
+	Dog dog{"Spooky"};
+	//Animal *pAnimal {&cat};
+	cout << "Cat name = " << cat.getName() << " it says " << cat.speak() << endl;
+	cout << "Dog name = " << dog.getName() << " it says " << dog.speak() << endl;
+	cout << "After using virtual function" << endl;
+	//cout << "pAnimal name = " << pAnimal->getName() << " it says " << pAnimal->speak() << endl;
+	//pAnimal = &dog;
+	//cout << "pAnimal name = " << pAnimal->getName() << " it says " << pAnimal->speak() << endl;
+	//printf("Address of cat = %p", cat.getThis());
+
+
+	// Pure virtual functions:
+	Cow cow{"Betsy"};
+	cout << cow.getName() << endl;
+	cout << cow.speak() << endl;
+
+	// defining an object form duck class which just calls the pure virtual speak method
+	// which is defined seperately in helper.cpp
+	Duck duck{"Donald"};
+	cout << duck.getName() << endl;
+	cout << duck.speak() << endl;
+
+	// Interface class (Abstract class):
+	FileErrorLog log("errorLogFile.txt");
+	mySqrt(-2.0, log);
+}
+
+void vLearnVtable(){
+	cout << "Virtual table demo \n";
+
+}
 void vlearnFileHandling1()
 {
 	cout << "Example for file handling" << endl;

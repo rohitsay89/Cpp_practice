@@ -6,12 +6,14 @@
  */
 
 #include <iostream>
+#include <cmath>
 #include "main.hpp"
 
 using namespace std;
 
 int product::itemCount = 0;
 
+// ================= class function definitions ================//
 product::product(void)
 {
 	codeNo = 0;
@@ -150,6 +152,14 @@ void Person::printData(){
 	cout << "Age = " << getAge() << endl;
 }
 
+// this is a definition of a pure virtual function
+// this can be used as a default method to run when you
+// do not want to run the derived class methods
+// look into vLearnVirtualFunctions() for usage
+std::string Animal::speak(){
+	return "Calling default function in Animal class\n";
+}
+
 template <class T>
 T* usePool<T>::checkout(){
 	m_data = m_data + 9;
@@ -165,6 +175,48 @@ bool usePool<T>::checkin(T *instance){
 }
 //T* usePool::checkout();
 //bool usePool::checkin(T* instance);
+
+// constructor for the error logger
+FileErrorLog::FileErrorLog(const char *fname){
+	m_fileName = (char*)fname;
+	m_fio.open(m_fileName, ios_base::in | ios_base::app);
+	if(m_fio.good()){
+		cout << "log file opened\n";
+	}
+}
+
+bool FileErrorLog::openLog(const char *fileName){
+	//m_fio.open(fileName, ios_base::in | ios_base::app);
+	return true;
+}
+
+bool FileErrorLog::closeLog(){
+	cout << "Closing the file now\n";
+	m_fio.close();
+	return true;
+}
+
+bool FileErrorLog::writeError(const char* errorMessage){
+	cout << "Writing to file: " << errorMessage << endl;
+	m_fio << errorMessage << endl;
+	return true;
+}
+
+
+
+// ============= small helpers =========================//
+double mySqrt(double value, FileErrorLog &log){
+	if(value < 0.00){
+		log.writeError("Unable to calculate squareroot less than 0.0\n");
+		return 0.0;
+	}
+	else
+	{
+		return std::sqrt(value);
+	}
+
+	return 0.00;
+}
 
 bool isAlmostEqual(double a, double b, double epsilon){
 	return (std::abs(a-b) <= epsilon);

@@ -7,42 +7,14 @@
 #ifndef MAIN_HPP_
 #define MAIN_HPP_
 
+#include <string>
 #include <string.h>
 #include <fstream>
 #include <cassert>
+//#include <fstream>
 
 #define LEN	24
 typedef uint32_t size_bit;
-
-void vlearnFundamentalTypes();
-void vlearnConstantTypes();
-void vlearnArithmatics();
-void vlearnBitManipulation();
-void learnMemLayout();
-void vPrintFromFile();
-void vReadBinaryFile();
-void vLearnEnumClass();
-void vLearnEncapsulation();
-void vLearnInheritance();
-void vLearnAbstraction();
-void vLearnFriendFunc();
-void vLearnPointer();
-void vLearnStatic();
-void vLearnInheritance1();
-void vLearnInheritance2();
-void vlearnFileHandling1();
-void vlearnFileHandling2();
-void vlearnStringHandling();
-void vlearnTemplates();
-void vlearnContainers();
-void vlearnMemPool();
-
-
-// helper function declerations:
-void memAlloc();
-int add(int , int& );
-bool isAlmostEqual(double a, double b, double epsilon);
-bool approxEqual(double a, double b, double epsilon);
 
 // structs:
 struct gradStu
@@ -210,6 +182,12 @@ public:
 	~Manager();
 };
 
+
+
+/**
+ * Multi level inheritance example
+ * */
+//Person is the base class in this case
 class Person{
 private:
 	char m_name[LEN];
@@ -223,6 +201,7 @@ public:
 	void printData();
 };
 
+// Student is derived from person
 class Student:public Person
 {
 private:
@@ -237,6 +216,7 @@ public:
 	void printData();
 };
 
+// Graduate_Student is derived from Student
 class Graduate_Student:public Student
 {
 private:
@@ -249,6 +229,102 @@ public:
 	char *getSubject(){return m_subject;}
 	bool getEmpStat(){return m_employed;}
 	void printData();
+};
+
+
+
+// base and derived class for virtual functions
+class Base{
+protected:
+	int m_value;
+
+public:
+	Base(int val):m_value{val}{
+	}
+	std::string getName() const { return "Base"; }
+	int getValue() const { return m_value; }
+};
+
+class Derived:public Base{
+public:
+	Derived(int val):Base{val}{}
+	std::string getName() const { return "Derived"; }
+	int getValueDoubled() const { return (m_value*2); }
+};
+
+// Virtual functions
+class Animal{
+protected:
+	std::string m_name;
+	Animal(std::string &name):m_name{name}{}
+
+public:
+	const std::string& getName() const { return m_name;}
+	// using pure virtual function:
+	virtual std::string speak() = 0;
+	// using non pure virtual function
+	//virtual std::string speak() const { return "???"; }
+	virtual Animal* getThis() {return this;}
+};
+
+class Cat: public Animal{
+public:
+	Cat(std::string name):Animal{name}{}
+	std::string speak() override { return "Meow"; }
+	Cat* getThis() override { return this;}
+};
+
+class Dog: public Animal{
+public:
+	Dog(std::string name):Animal{name}{}
+	std::string speak() override { return "Woof"; }
+	Dog* getThis() override { return this; }
+};
+
+class Cow:public Animal{
+public:
+	Cow(std::string name):Animal(name){}
+	std::string speak() override { return "Moo"; }
+};
+
+class Duck:public Animal{
+public:
+	Duck(std::string name):Animal(name){}
+	// the following gets called if uncommented
+	//std::string speak() override { return "Quack Quack"; }
+	std::string speak() override{
+		return Animal::speak();
+	}
+};
+
+
+// pure virtual class = Interface class
+class IErrorLog{
+public:
+	virtual bool openLog(const char *fileName) = 0;
+	virtual bool closeLog() = 0;
+	virtual bool writeError(const char *errorMessage) = 0;
+	virtual ~IErrorLog() {}	// this is vitual destructor
+};
+
+class FileErrorLog:public IErrorLog{
+private:
+	std::fstream m_fio;
+	char *m_fileName;
+
+public:
+	FileErrorLog(const char *fname);
+	~FileErrorLog(){
+		closeLog();
+	}
+
+	bool openLog(const char *fileName);
+	bool closeLog();
+	bool writeError(const char* errorMessage);
+};
+
+class ScreenErrorLog:public IErrorLog{
+
 };
 
 // operator overloading
@@ -546,5 +622,38 @@ public:
 	//~usePool(){delete[] m_data;}
 	~usePool();
 };
+
+// main function declerations here:
+void vlearnFundamentalTypes();
+void vlearnConstantTypes();
+void vlearnArithmatics();
+void vlearnBitManipulation();
+void learnMemLayout();
+void vPrintFromFile();
+void vReadBinaryFile();
+void vLearnEnumClass();
+void vLearnEncapsulation();
+void vLearnInheritance();
+void vLearnAbstraction();
+void vLearnFriendFunc();
+void vLearnPointer();
+void vLearnStatic();
+void vLearnInheritance1();
+void vLearnInheritance2();
+void vLearnVirtualFunctions();
+void vLearnVtable();
+void vlearnFileHandling1();
+void vlearnFileHandling2();
+void vlearnStringHandling();
+void vlearnTemplates();
+void vlearnContainers();
+void vlearnMemPool();
+
+// helper function declerations:
+void memAlloc();
+int add(int , int& );
+bool isAlmostEqual(double a, double b, double epsilon);
+bool approxEqual(double a, double b, double epsilon);
+double mySqrt(double value, FileErrorLog &log);
 
 #endif /* MAIN_HPP_ */
