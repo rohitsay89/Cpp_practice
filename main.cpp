@@ -38,7 +38,7 @@ using namespace std::chrono;
 //#define LEARNSTATIC
 //#define INHERITANCE1
 //#define INHERITANCE2
-#define VIRTUAL_FUNCTIONS
+//#define VIRTUAL_FUNCTIONS
 //#define VTABLE
 //#define FILE_HANDLING1
 //#define FILE_HANDLING2
@@ -46,6 +46,7 @@ using namespace std::chrono;
 //#define LEARN_TEMPLATES
 //#define LEARN_CONTAINERS
 //#define MEM_POOL_PATTERN
+#define EXCEPTION_HANDLING
 
 
 Color& operator++(Color& c)
@@ -186,6 +187,9 @@ int main()
 	vlearnMemPool();
 #endif
 
+#ifdef EXCEPTION_HANDLING
+	vLearnExceptionHandling();
+#endif
 	printf("\nProgram execution completed\n");
 	return 0;
 }
@@ -998,3 +1002,14 @@ void vlearnMemPool(){
 	//up1.checkout();
 }
 
+
+void vLearnExceptionHandling(){
+	cout << "This is exception handling example\n";
+	try{
+		throw -1;
+	}
+	catch(int x){
+		cerr << "We caught an int exception: " << x << endl;
+		cout << "Continuing execution\n";
+	}
+}

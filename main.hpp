@@ -679,6 +679,7 @@ void vlearnStringHandling();
 void vlearnTemplates();
 void vlearnContainers();
 void vlearnMemPool();
+void vLearnExceptionHandling();
 
 // helper function declerations:
 void memAlloc();
